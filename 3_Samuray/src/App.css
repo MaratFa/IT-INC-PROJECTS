@@ -1,8 +1,36 @@
-.App {
-  padding: 30px;
-  display: flex;
+.app-wrapper {
+  margin: 0 auto;
+  display: grid;
+  width: 1200px;
+  grid-template-areas:
+  "h h"
+  "n c";
+
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  /* grid-gap: 10px; */
 }
 
-.App > div {
-  margin-right: 50px;
+.header {
+  grid-area: h;
+  background-color: rgb(109, 160, 213);   
+}
+
+.header img {
+  width: 54px;
+
+}
+
+.nav {
+  grid-area: n;
+  background-color: rgb(179, 194, 228);
+}
+
+.content {
+  grid-area: c;
+  background-color: rgb(218, 225, 233);
+}
+
+.content img {
+  width: 800px;
 }
