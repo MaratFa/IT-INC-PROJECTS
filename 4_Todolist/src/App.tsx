@@ -1,27 +1,48 @@
-import React from 'react';
 import './App.css';
-import {TaskType, Todolist } from './Todolist';
+import {Todolist} from './Todolist';
+import { useState } from 'react';
+export type FilterValuesType = 'All'|'Active'|'Completed'
 
 function App() {
-    const forTrack1='What to learn1111';
-    const forTrack2='What to learn2222';
+
+    let[tasks, setTasks] = useState([
+        { id: 1, title: "HTML&CSS", isDone: true },
+        { id: 2, title: "JS", isDone: true },
+        { id: 3, title: "ReactJS", isDone: false },
+        { id: 4, title: "React API", isDone: false },
+        { id: 5, title: "GraphQL", isDone: false }
+    ])
+
+    function removeTask(id: number) {
+        let filteredTasks = tasks.filter(task => task.id !== id)
+        setTasks(filteredTasks)
+    }
+
+    let [filter, setFilter] = useState<FilterValuesType>('All')
     
-    const tasks1: Array<TaskType> = [
-        { id: 1, title: "HTML&CSS", isDone: true }, //0
-        { id: 2, title: "JS", isDone: true },       //1
-        { id: 3, title: "ReactJS", isDone: false }, //2
-        { id: 4, title: "ReactJS", isDone: false }  //3
-    ]
-    const tasks2: Array<TaskType> = [
-        { id: 1, title: "Hello world", isDone: true },
-        { id: 2, title: "I am Happy", isDone: false },
-        { id: 3, title: "Yo", isDone: false }
-    ]
+    let tasksForTodolist = tasks
+
+    if (filter === 'Active') {
+        tasksForTodolist = tasks.filter(task => task.isDone === false)
+    }
+
+    if (filter === 'Completed') {
+        tasksForTodolist = tasks.filter(task => task.isDone === true)
+    }
+
+    function changeFilter(value: FilterValuesType) {
+        setFilter(value)
+    }
+        
 
     return (
         <div className="App">
-            <Todolist track1={forTrack1} track2={100200} tasks={tasks1} /> // янв
-            <Todolist track1={forTrack2} tasks={tasks2} /> // февр
+            <Todolist 
+                title="What to learn"
+                tasks={tasksForTodolist}
+                removeTask={removeTask}
+                changeFilter={changeFilter}
+            />                
         </div>
     );
 }
