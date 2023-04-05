@@ -13,15 +13,17 @@ function App() {
         { id: v1(), title: "React API", isDone: false },
         { id: v1(), title: "GraphQL", isDone: false }
     ])
-    console.log(tasks)
 
     function removeTask(id: string) {
         let filteredTasks = tasks.filter(task => task.id !== id)
         setTasks(filteredTasks)
     }
 
-    function addTask() {
-        let newTask = {id: v1(), title: "New Task", isDone: false };
+    function addTask(title: string) {
+        let newTask = {
+            id: v1(),
+            title: title,
+            isDone: false };
         let newTasks = [newTask, ...tasks]
         setTasks(newTasks)
     }
