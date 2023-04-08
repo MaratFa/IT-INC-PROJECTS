@@ -1,0 +1,14 @@
+.nav {
+    grid-area: menu;
+    font-size: 20px;
+    font-family: serif;
+    background-color: rgb(179, 194, 228);    
+  }
+
+.item {
+  color: white;
+}
+ 
+.item.active {
+  color: black;
+}
