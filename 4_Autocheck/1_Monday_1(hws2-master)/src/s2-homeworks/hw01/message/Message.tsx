@@ -1,10 +1,18 @@
 import s from './Message.module.css'
 
 // нужно создать правильный тип вместо any
-export type MessagePropsType = any
+export type MessagePropsType = {
+    message: {
+        id: number,
+        message: {text: string, time: string}
+        user: {avatar: string, name: string}
+    }
+};
 
 // нужно отобразить приходящие данные
 const Message = (props: MessagePropsType) => {
+    console.log(props);
+    debugger;
     return (
         <div id={'hw1-message-' + props.message.id} className={s.message}>
             <div className={s.imageAndText}>
