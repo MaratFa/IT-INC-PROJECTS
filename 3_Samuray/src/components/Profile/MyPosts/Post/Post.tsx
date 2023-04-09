@@ -10,7 +10,7 @@ const Post = (props: any) => {
             {props.message}
             <div>                
                 <button type='button' onClick={() => setCount(count + 1)}>Like</button>
-                <span>{count}</span>
+                <span>{' '}{count}</span>
             </div>
         </div>
     )
