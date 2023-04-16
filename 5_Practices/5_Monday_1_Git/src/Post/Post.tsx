@@ -16,9 +16,3 @@ export const Post = () => {
 }
 
 
-
-
-
-
-
-
